@@ -18,7 +18,7 @@ public class UniversiteServiceImpl implements IUniversiteService {
 
     @Override
     public Universite getUniversiteById(Long id) {
-        return universiteRepository.getById(id);
+        return universiteRepository.findById(id).get();
     }
 
     @Override

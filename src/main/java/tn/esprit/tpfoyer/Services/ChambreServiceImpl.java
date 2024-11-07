@@ -18,7 +18,7 @@ public class ChambreServiceImpl implements IChambreService{
 
     @Override
     public Chambre getChambreById(Long id) {
-        return chambreRepository.getById(id);
+        return chambreRepository.findById(id).get();
     }
 
     @Override

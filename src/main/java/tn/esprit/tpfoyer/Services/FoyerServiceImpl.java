@@ -18,7 +18,7 @@ public class FoyerServiceImpl implements IFoyerService {
 
     @Override
     public Foyer getFoyerById(Long id) {
-        return foyerRepository.getById(id);
+        return foyerRepository.findById(id).get();
     }
 
     @Override
