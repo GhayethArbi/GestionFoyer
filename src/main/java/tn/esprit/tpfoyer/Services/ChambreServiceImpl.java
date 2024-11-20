@@ -68,6 +68,7 @@ public class ChambreServiceImpl implements IChambreService{
     }
 
 
+    @Scheduled(cron = "0 */5 * * * *") // Executes every 5 minutes
 
     public void nbrePlacesDisponibleParChambreAnneeEnCours(){
         List<Chambre> chambres = getChambres();
