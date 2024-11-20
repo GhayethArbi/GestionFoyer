@@ -1,7 +1,10 @@
 package tn.esprit.tpfoyer.Controllers;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import tn.esprit.tpfoyer.Entity.Chambre;
@@ -12,11 +15,14 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/chambre")
+@Tag(name = "Section chambre pour 4sim1")
 
 public class ChambreRestController {
 
     IChambreService iChambreService;
 
+
+    @Operation(description = "cette methode affiche tt le chambre de la db")
     @GetMapping("/retrieve-all-chambres")
     public List<Chambre> retrieveAllChambres(){
         List<Chambre> chambreList = iChambreService.getChambres();
