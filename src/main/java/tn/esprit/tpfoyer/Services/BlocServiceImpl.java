@@ -1,6 +1,8 @@
 package tn.esprit.tpfoyer.Services;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.Entity.Bloc;
 import tn.esprit.tpfoyer.Repositories.BlocRepository;
@@ -8,6 +10,7 @@ import tn.esprit.tpfoyer.Repositories.BlocRepository;
 import java.util.List;
 @Service
 @AllArgsConstructor
+@Slf4j
 public class BlocServiceImpl implements IBlocService{
 
     BlocRepository blocRepository;
@@ -37,4 +40,17 @@ public class BlocServiceImpl implements IBlocService{
         blocRepository.deleteById(id);
         System.out.println("bloc deleted succeff");
     }
+
+
+
+
+    @Scheduled(fixedRate = 60000)
+    public List<Bloc> retrieveAllBlocs(){
+        List<Bloc> blocs = getBlocs();
+        blocs.stream().forEach(bloc -> log.info(bloc.toString()));
+        return blocs;
+    }
+
+
+
 }

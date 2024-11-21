@@ -113,4 +113,14 @@ public class ChambreServiceImpl implements IChambreService{
     public void deleteChambre(Long id) {
         chambreRepository.deleteById(id);
     }
+
+
+
+
+
+
+
+
+
+
 }
