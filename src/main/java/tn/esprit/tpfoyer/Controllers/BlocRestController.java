@@ -18,23 +18,21 @@ public class BlocRestController {
 
     @GetMapping("/retrieve-all-blocs")
     public List<Bloc> retrieveAllBlocs(){
-        List<Bloc> blocList = iBlocService.getBlocs();
-        return blocList;
+        return iBlocService.getBlocs();
     }
     @GetMapping("/retrieve-bloc/{id}")
-    public Bloc retrieveChambreById(@PathVariable("id") Long id){
+    public Bloc retrieveBlocById(@PathVariable("id") Long id){
         return iBlocService.getBlocById(id);
     }
     @PostMapping("/add-bloc")
     public Bloc addBloc(@RequestBody Bloc bloc){
-        Bloc bloc1 = iBlocService.addBloc(bloc);
-        return bloc1;
+        return iBlocService.addBloc(bloc);
     }
 
     @PutMapping("/update-bloc")
     public Bloc updateBloc(@RequestBody Bloc bloc){
-        Bloc bloc1 = iBlocService.updateBloc(bloc);
-        return bloc1;
+        return iBlocService.updateBloc(bloc);
+
     }
 
     @DeleteMapping("/delete-bloc/{id}")

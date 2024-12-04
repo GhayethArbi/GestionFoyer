@@ -42,14 +42,17 @@ public class ReservationServiceImpl implements IReservationService {
     }
 
 
-    @Scheduled( fixedRate = 50000)
+    //scheduled
+    @Scheduled( fixedRate = 50000)// pour dire chaque 50  seconde !!!
     public void mettreAJourEtAfficherReservations(){
         List<Reservation> reservations = getReservations();
-        reservations.stream().forEach(reservation -> {
+        reservations.forEach(reservation -> {
             Date date1 = new Date(2024,1,1);
-            if (reservation.getAnneeUniversitaire().compareTo( date1)==1){
+            if (reservation.getAnneeUniversitaire().compareTo(date1) > 0){
                 reservation.setEstValide(false);
                 updateReservation(reservation);
+                log.info(reservation.toString());
+            }else{
                 log.info(reservation.toString());
             }
         });

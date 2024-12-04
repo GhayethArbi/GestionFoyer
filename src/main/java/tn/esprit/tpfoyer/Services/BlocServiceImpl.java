@@ -43,12 +43,11 @@ public class BlocServiceImpl implements IBlocService{
 
 
 
-
+    //scheduled
     @Scheduled(fixedRate = 60000)
-    public List<Bloc> retrieveAllBlocs(){
+    public void retrieveAllBlocs(){
         List<Bloc> blocs = getBlocs();
-        blocs.stream().forEach(bloc -> log.info(bloc.toString()));
-        return blocs;
+        blocs.forEach(bloc -> log.info(bloc.toString()));
     }
 
 

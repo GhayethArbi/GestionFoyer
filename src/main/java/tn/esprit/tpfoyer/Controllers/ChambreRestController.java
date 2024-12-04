@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import tn.esprit.tpfoyer.Entity.Chambre;
+import tn.esprit.tpfoyer.Entity.TypeChambre;
 import tn.esprit.tpfoyer.Services.IChambreService;
 
 import java.util.List;
@@ -52,6 +53,25 @@ public class ChambreRestController {
         return "Chambre deleted";
 
     }
+
+    //keywords
+    @GetMapping("/getAllChambreByTypeChambre/{type-chambre}")
+    public List<Chambre> getAllChambreByTypeChambre(@PathVariable("type-chambre")TypeChambre typeChambre){
+        return iChambreService.findAllChambreByTypeChambre(typeChambre);
+    }
+    @GetMapping("/getAllChambreByNumeroChambreBetween/{start}/{end}")
+    public List<Chambre> getAllChambreByNumeroChambreBetween(@PathVariable("start") long start,@PathVariable("end") long end){
+        return iChambreService.retrieveByNumeroChambreBetween(start, end);
+    }
+    @GetMapping("/getAllChambreByTypeChambreAndBloc_IdBloc/{type-chambre}/{id}")
+    public List<Chambre> getAllChambreByTypeChambreAndBloc_IdBloc(@PathVariable("type-chambre")TypeChambre typeChambre,@PathVariable("id") long id){
+        return iChambreService.retrieveAllByTypeChambreAndBloc_IdBloc(typeChambre, id);
+    }
+    @GetMapping("/getAllChambreByReservationsIsEmpty")
+    public List<Chambre> getAllChambreByReservationsIsEmpty(){
+        return iChambreService.retrieveAllByReservationsIsEmpty();
+    }
+
 
 
 }
